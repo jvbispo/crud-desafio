@@ -2,23 +2,23 @@ import multer from 'multer';
 import { resolve } from 'path';
 import crypto from 'crypto';
 
-
-
 export default {
-  directory: resolve(__dirname, '..', '..', 'tmp'),
+  avatarsDirectory: resolve(__dirname, '..', '..', 'tmp', 'avatars'),
+  publicationsDirectory: resolve(__dirname, '..', '..', 'tmp', 'publications'),
   storage: multer.diskStorage({
-    destination:function (req, file, cb) {
-      const dist = file.fieldname ==='avatar' ?resolve(__dirname, '..', '..', 'tmp','avatars'):
-       resolve(__dirname, '..', '..', 'tmp','publications') ;
+    destination(request, file, callback) {
+      const dist =
+        file.fieldname === 'publication'
+          ? resolve(__dirname, '..', '..', 'tmp', 'publications')
+          : resolve(__dirname, '..', '..', 'tmp', 'avatars');
 
-      cb(null, dist)
+      return callback(null, dist);
     },
     filename(request, file, callback) {
-      const fileHash = crypto.randomBytes(10).toString('HEX');
-      const fileName = `${fileHash}-${file.originalname} `;
-     
-      return callback(null, fileName);
+      const hash = crypto.randomBytes(6).toString('HEX');
+      const fileHash = `${hash}-${file.originalname}`;
+
+      return callback(null, fileHash);
     },
   }),
 };
-

@@ -1,27 +1,22 @@
-import path from 'path';
-import fs from 'fs';
 import Post from '../entities/Post';
-import uploadConfig from '../config/uploadConfig';
 import IPostRepository from '../dtos/IPostRepository';
-import ICreatePost from '../dtos/ICreatePost'
-
-
+import ICreatePost from '../dtos/ICreatePost';
 
 class UpdateAvatarService {
   constructor(private postRepository: IPostRepository) {}
 
- public async execute({
+  public async execute({
     name,
     avatarFileName,
-    publicationFileName
+    publicationFileName,
   }: ICreatePost): Promise<Post> {
-      const avatar = avatarFileName.trim()
-      const publication = publicationFileName.trim()
+    const avatar = avatarFileName.trim();
+    const publication = publicationFileName.trim();
     const post = await this.postRepository.create({
       name,
       avatarFileName: avatar,
-      publicationFileName: publication
-    })
+      publicationFileName: publication,
+    });
 
     return post;
   }
