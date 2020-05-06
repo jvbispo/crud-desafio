@@ -1,0 +1,24 @@
+{
+  "name": "codigos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "pg": "^8.0.3",
+    "typeorm": "^0.2.24",
+    "uuidv4": "^6.0.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/multer": "^1.4.3",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
+  }
+}
