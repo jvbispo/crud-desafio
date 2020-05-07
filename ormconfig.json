@@ -1,9 +1,9 @@
 {
   "type": "postgres",
-  "host": "localhost",
+  "host": "",
   "port": "5432",
-  "username": "conexao",
-  "password": "root",
+  "username": "c",
+  "password": "",
   "database":"crud_desafio",
   "entities": [
     "./src/entities/*.ts"
